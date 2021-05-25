@@ -23,6 +23,7 @@ import propTypes from 'prop-types'
 import {signUp} from '../action/auth'
 import {connect} from 'react-redux'
 
+
 const SignUp = ({signUp}) => {
 
     const [name, setName] = useState('')
@@ -32,7 +33,7 @@ const SignUp = ({signUp}) => {
     const [country, setCountry] = useState('')
     const [bio, setBio] = useState('')
     const [image, setImage] = useState(
-        'https://firebase.google.com/downloads/brand-guidelines/PNG/logo-logomark.png'
+        'https://media-exp1.licdn.com/dms/image/C5603AQHf_-MK10TZrg/profile-displayphoto-shrink_200_200/0/1603905838057?e=1622073600&v=beta&t=LG2ISupFQctVevgsmf3F4dPWuy3KSKHQQLq3FAhHcNs'
     )
 
     const [imageUploading, setImageUploading] = useState(false)
@@ -47,9 +48,9 @@ const SignUp = ({signUp}) => {
               } else if (response.error) {
                 console.log('ImagePicker Error: ', response.error);
               } else if (response.customButton) {
-                console.log('User tapped custom button: ', response.customButton);
+                console.log("ERROR FOUND --------------------------------------->");
+                // console.log('User tapped custom button: ', response.customButton);
               } else {
-                console.log(response)
                 uploadImage(response)
               }
              

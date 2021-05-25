@@ -27,11 +27,12 @@ import {connect} from 'react-redux'
 import propTypes from 'prop-types'
 import shortid from 'shortid'
 
+// firebase = "https://firebase.google.com/downloads/brand-guidelines/PNG/logo-logomark.png"
 const AddPost = ({navigation, userState}) => {
 
     const [location, setLocation] = useState('')
     const [description, setDescription] = useState('')
-    const [image, setImage] = useState(null)
+    const [image, setImage] = useState('https://cdn.arstechnica.net/wp-content/uploads/2014/01/logo6w.png')
 
     const [imageUploading, setImageUploading] = useState(false)
     const [uploadStatus, setUploadStatus] = useState(null)
@@ -40,7 +41,6 @@ const AddPost = ({navigation, userState}) => {
     const chooseImage = async () => {
         ImagePicker.showImagePicker(options, (response) => {
             console.log('Response = ', response)
-
             if (response.didCancel) {
                 console.log('User cancelled image picker');
               } else if (response.error) {
@@ -51,8 +51,6 @@ const AddPost = ({navigation, userState}) => {
                 console.log(response)
                 uploadImage(response)
               }
-             
-               
         })
     }
 
@@ -64,7 +62,6 @@ const AddPost = ({navigation, userState}) => {
         const task = reference.putFile(response.path)
         task.on('state_changed', (taskSnapshot) => {
             const percentage = (taskSnapshot.bytesTransferred / taskSnapshot.totalBytes) * 1000
-
             setUploadStatus(percentage)
         })
 
